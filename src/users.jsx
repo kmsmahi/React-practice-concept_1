@@ -1,17 +1,11 @@
-import { use } from "react"
-import User from "./user";
-export default function Users( {fetchUser} ){
-    const users=use(fetchUser);
-    console.log(users);
-    return(
-        <div className="player">
-            <h2>Users: </h2>
-    {
-            users.map(user => {
-            return <User key={user.id} user={user} />
-    })
-}
+export default function Users({ users }) {
+  return (
+    <div>
+      <h2>Users</h2>
 
-        </div>
-    )
+      {users.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  );
 }

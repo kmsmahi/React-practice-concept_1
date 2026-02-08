@@ -1,10 +1,10 @@
 export default function User({user}){
     console.log(user);
-    const{name,email}=user;
-    return (
-        <div className="player">
-            <h3>Name: {name}</h3>
-            <p>Email: {email}</p>
-        </div>
-    )
-}
+    return <>
+    <div className="border border-red-500">
+        <h1>{user.email}</h1>
+        <h1>{user.name}</h1>
+        <h1>{user.phone}</h1>
+    </div>
+    </>
+};

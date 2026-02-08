@@ -1,30 +1,19 @@
-import { Suspense, useState } from 'react'
-import './App.css'
-import Users from './users'
+import { useEffect, useState } from "react";
+import Users from "./Users";
 
+export default function Main() {
+  const [users, setUsers] = useState([]);
 
-
-function App() {
- 
-  const fetchUser=fetch('https://jsonplaceholder.typicode.com/users')
-  .then((res)=>res.json())
-  
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []);
 
   return (
-    <>
-      
-      <h1>Vite + React</h1>   
-      <Suspense fallback={<h3>loading...</h3>
-      }>
-        <Users fetchUser={fetchUser}></Users>
-      </Suspense>
-      
-    </>
-  )
+    <div>
+      <h1>Main</h1>
+      <Users users={users} />
+    </div>
+  );
 }
-
-
-
-
-
-export default App
